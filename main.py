@@ -96,7 +96,7 @@ def play_again():
     if again == "да":
         game()
     else:
-        print("\033[0;35;40mКазино всегда выигрывает!\033[0m")
+        print("Казино всегда выигрывает!")
         exit()
 
 # Основная функция игры
@@ -105,7 +105,7 @@ def game():
 
     print("\n    Новая игра!\n")
     print("-" * 30 + "\n")
-    print(f"    \033[1;32;40mПОБЕДЫ:  \033[1;37;40m{wins}   \033[1;31;40mПОРАЖЕНИЯ:  \033[1;37;40m{losses}\n\033[0m")
+    print(f"    Победы: {wins}   Поражения: {losses}\n")
     print("-" * 30 + "\n")
 
     dealer_hand = deal(deck)
@@ -116,10 +116,10 @@ def game():
     blackjack(dealer_hand, player_hand)
 
     while True:
-        choice = input("\033[1;33;40mВы хотите [д]обрать карту, [о]становиться или [в]ыйти из игры? \033[0m").lower()
+        choice = input("Вы хотите [д]обрать карту, [о]становиться или [в]ыйти из игры? ").lower()
         if choice == 'д':
             hit(deck, player_hand)
-            print(player_hand)
+            print(f"Ваша рука: {player_hand}")
             print("Сумма ваших очков: " + str(total(player_hand)))
             if total(player_hand) > 21:
                 print('У вас перебор')
@@ -137,7 +137,7 @@ def game():
                 score(dealer_hand, player_hand)
                 play_again()
         elif choice == "в":
-            print("\033[0;35;40mКазино всегда выигрывает!\033[0m")
+            print("Казино всегда выигрывает!")
             exit()
         else:
             print("Неверный ввод. Пожалуйста, введите 'д', 'о' или 'в'.")
